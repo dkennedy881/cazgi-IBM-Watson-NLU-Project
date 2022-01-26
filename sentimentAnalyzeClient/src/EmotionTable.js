@@ -2,6 +2,42 @@ import React from "react";
 import "./bootstrap.min.css";
 
 class EmotionTable extends React.Component {
+  setColor = (label) => {
+    let color = "white";
+    switch (label) {
+      case "positive":
+        color = "green";
+        break;
+      case "negative":
+        color = "red";
+        break;
+
+      case "sadness":
+        color = "blue";
+        break;
+
+      case "joy":
+        color = "pink";
+        break;
+
+      case "fear":
+        color = "grey";
+        break;
+
+      case "disgust":
+        color = "orange";
+        break;
+
+      case "anger":
+        color = "#454545";
+        break;
+
+      default:
+        color = "black";
+    }
+    console.log(label);
+    return color;
+  };
   render() {
     //Returns the emotions as an HTML table
     return (
@@ -14,7 +50,7 @@ class EmotionTable extends React.Component {
               please click the instructions to see how to implement a map*/
               Object.entries(this.props.emotions).map((entry) => (
                 <tr>
-                  <td>{entry[0]}</td>
+                  <td style={{ color: this.setColor(entry[0]) }}>{entry[0]}</td>
                   <td>{entry[1]}</td>
                 </tr>
               ))
